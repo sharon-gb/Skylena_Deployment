@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="skylena.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <div class="container">
+    <div class="login-container">
+      <h1>Login</h1>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" class="form-control" />
+          <div id="username-error" class="invalid-feedback"></div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" />
+          <div id="password-error" class="invalid-feedback"></div>
+        </div>
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+      var usernameError = document.getElementById('username-error');
+      var passwordError = document.getElementById('password-error');
+
+      // Reset error messages
+      usernameError.textContent = '';
+      passwordError.textContent = '';
+
+      // Validate username and password
+      if (username.length < 5) {
+        usernameError.textContent = 'Username must be 5 characters long!';
+      }
+      if (password.length < 8) {
+        passwordError.textContent = 'Password must be 8 characters long!';
+      }
+      
+      // Perform login logic if validation passes
+      if (username.length >= 5 && password.length >= 8) {
+        console.log('Username:', username);
+        console.log('Password:', password);
+      }
+    });
+  </script>
+</body>
+</html>
